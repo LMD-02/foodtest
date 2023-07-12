@@ -25,7 +25,8 @@
       }
 
       .actions {
-          display: flex;
+          /*display: flex;*/
+          margin:0 4px;
           justify-content: space-around;
       }
 
@@ -73,7 +74,7 @@
         @include('includes.drop_quanly')
         <div class="col-md-10">
           <div class="container-fluid">
-              <h1 class="display-4 my-4 text-info">List of products</h1>
+              <h1 class="display-4 my-4 text-info">Món ăn</h1>
 
               <button onclick="openModal()">Thêm</button>
 
@@ -83,11 +84,11 @@
                   <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Tên</th>
-                          <th>Số lượng</th>
-                          <th>Giá</th>
-                          <th>Giá gốc</th>
-
+                          <th>Hình ảnh</th>
+                          <th>Thông tin món ăn</th>
+                          <th>Danh mục</th>
+                          <th>Thành phần / nguyên liệu</th>
+                          <th>Các bước nấu</th>
                           <th>Thao tác</th>
                       </tr>
                   </thead>
@@ -108,10 +109,12 @@
           <form id="form" action="{{ route('add_products') }}" method="post">
               @csrf
               <input type="text" id="name" name="name" placeholder="Tên" required><br><br>
-              <input type="number" id="quantity" name="quantity" placeholder="Số lượng" required><br><br>
-              <input type="number" id="price_cost" name="price_cost" placeholder="Giá gốc" required><br><br>
+              <input type="text" id="image" name="image" placeholder="Hình ảnh" required><br><br>
+              <input type="text" id="description" name="description" placeholder="Thông tin thêm " required><br><br>
+              <input type="text" id="category" name="category" placeholder="Danh mục " required><br><br>
+              <textarea style="width:256px;height: 200px" type="text" id="food_need" name="food_need" placeholder="Nguyên liệu " required></textarea><br><br>
+              <textarea style="width:256px;height: 200px" type="text" id="food_step" name="food_step" placeholder="Các bước nấu " required></textarea><br><br>
 
-              <input type="number" id="price" name="price" placeholder="Giá" required><br><br>
               <button>Thêm</button>
           </form>
       </div>
@@ -138,12 +141,14 @@
                       var product = ketqua.products[i];
 
                       var row = $("<tr></tr>");
-
+                      let $image =   `<img src="${product.image}" style="width:50px !important; height:50px !important">`
                       $("<td></td>").text(product.id).appendTo(row);
-                      $("<td></td>").text(product.name).appendTo(row);
-                      $("<td></td>").text(product.quantity).appendTo(row);
-                      $("<td></td>").text(product.price).appendTo(row);
-                      $("<td></td>").text(product.price_cost).appendTo(row);
+                      $("<td></td>").html($image).appendTo(row);
+                      let $info = `<span style="font-weight:bold">${product.name}<br>${product.description}</span>`
+                      $("<td></td>").html($info).appendTo(row);
+                      $("<td></td>").text(product.category).appendTo(row);
+                      $("<td></td>").text(product.food_need).appendTo(row);
+                      $("<td></td>").text(product.food_step).appendTo(row);
 
                       var actionsColumn = $("<td class='actions'></td>");
 
@@ -177,10 +182,15 @@
                                   $('#form').attr('action', '/edit/' + ketqua
                                       .products[0].id);
 
+
+
                                   $("#name").val(ketqua.products[0].name);
-                                  $("#quantity").val(ketqua.products[0].quantity);
-                                  $("#price").val(ketqua.products[0].price);
-                                  $("#price_cost").val(ketqua.products[0].price_cost);
+                                  $("#image").val(ketqua.products[0].image);
+                                  $("#description").val(ketqua.products[0].description);
+                                  $("#category").val(ketqua.products[0].category);
+                                  $("#food_need").val(ketqua.products[0].food_need);
+                                  $("#food_step").val(ketqua.products[0].food_step);
+
 
                               });
                               openModal();
@@ -210,12 +220,14 @@
                   var product = ketqua.products[i];
 
                   var row = $("<tr></tr>");
-
+                  let $image =   `<img src="${product.image}" style="width:50px !important; height:50px !important">`
                   $("<td></td>").text(product.id).appendTo(row);
-                  $("<td></td>").text(product.name).appendTo(row);
-                  $("<td></td>").text(product.quantity).appendTo(row);
-                  $("<td></td>").text(product.price).appendTo(row);
-                  $("<td></td>").text(product.price_cost).appendTo(row);
+                  $("<td></td>").html($image).appendTo(row);
+                  let $info = `<span style="font-weight:bold">${product.name}<br>${product.description}</span>`
+                  $("<td></td>").html($info).appendTo(row);
+                  $("<td></td>").text(product.category).appendTo(row);
+                  $("<td></td>").text(product.food_need).appendTo(row);
+                  $("<td></td>").text(product.food_step).appendTo(row);
 
                   var actionsColumn = $("<td class='actions'></td>");
 
@@ -247,10 +259,13 @@
                               $('#form').attr('action', '/edit/' + ketqua
                                   .products[0].id);
 
+
                               $("#name").val(ketqua.products[0].name);
-                              $("#quantity").val(ketqua.products[0].quantity);
-                              $("#price").val(ketqua.products[0].price);
-                              $("#price_cost").val(ketqua.products[0].price_cost);
+                              $("#image").val(ketqua.products[0].image);
+                              $("#description").val(ketqua.products[0].description);
+                              $("#category").val(ketqua.products[0].category);
+                              $("#food_need").val(ketqua.products[0].food_need);
+                              $("#food_step").val(ketqua.products[0].food_step);
 
                           });
                           openModal();

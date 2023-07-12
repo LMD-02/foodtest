@@ -21,16 +21,20 @@ class HomeController extends Controller
     public function add_products(Request $request)
     {
         $name = $request->get('name');
-        $quantity = $request->get('quantity');
-        $price = $request->get('price');
-        $price_cost = $request->get('price_cost');
+        $image = $request->get('image');
+        $description = $request->get('description');
+        $category = $request->get('category');
+        $food_need = $request->get('food_need');
+        $food_step = $request->get('food_step');
 
         DB::table('products')->insert([
             [
                 'name' => $name,
-                'quantity' => $quantity,
-                'price' => $price,
-                'price_cost' => $price_cost,
+                'image' => $image,
+                'description' => $description,
+                'category' => $category,
+                'food_need' => $food_need,
+                'food_step' => $food_step
             ]
 
         ]);
@@ -59,15 +63,22 @@ class HomeController extends Controller
     public function edit_products(Request $request, $id)
     {
         $name = $request->get('name');
-        $quantity = $request->get('quantity');
-        $price = $request->get('price');
+        $image = $request->get('image');
+        $description = $request->get('description');
+        $category = $request->get('category');
+        $food_need = $request->get('food_need');
+        $food_step = $request->get('food_step');
+
         // dd($name,$quantity,$price);
         DB::table('products')
             ->where('id', $id)
             ->update([
                 'name' => $name,
-                'quantity' => $quantity,
-                'price' => $price,
+                'image' => $image,
+                'description' => $description,
+                'category' => $category,
+                'food_need' => $food_need,
+                'food_step' => $food_step
             ]);
         return redirect()->route('sanpham');
     }

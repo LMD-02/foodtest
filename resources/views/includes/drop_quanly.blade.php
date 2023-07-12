@@ -19,45 +19,14 @@
             </li>
             <li>
                 <div class="dropdown">
-                    <a href="{{route('banhang')}}" class="nav-link text-white " ><svg
-                            class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
-                        </svg>
-                        Bán hàng</a>
-
-                </div>
-            </li>
-            <li>
-                <div class="dropdown">
                     <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown"><svg
                             class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#speedometer2"></use>
                         </svg>
                         Quản lý</a>
                     <ul class="dropdown-menu">
-                        @if(Session::get('user')->role == 1)
-                            <li><a class="dropdown-item" href="{{route('nhanvien')}}">Nhân viên</a></li>
-                            <li><a class="dropdown-item" href="{{route('khachhang')}}">Khách hàng</a></li>
-                            <li><a class="dropdown-item" href="{{route('sanpham')}}">Sản phẩm</a></li>
-                        @endif
-                            <li><a class="dropdown-item" href="{{route('donhang')}}">Đơn Hàng</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="dropdown">
-                    <a href="#" class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown"><svg
-                            class="bi pe-none me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
-                        </svg>
-                        Thống kê</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('thongke')}}">Thống kê tổng quát</a></li>
-                        <li><a class="dropdown-item" href="{{route('thongkeloinhuan')}}">Thống kê theo lợi nhuận</a></li>
-                        <li><a class="dropdown-item" href="{{route('thongkenhanvien')}}">Thống kê theo nhân viên </a></li>
-                        <li><a class="dropdown-item" href="{{route('thongkekhachhang')}}">Thống kê theo khách hàng </a></li>
-                        <li><a class="dropdown-item" href="{{route('thongkesanpham')}}">Thống kê theo sản phẩm </a></li>
 
+                            <li><a class="dropdown-item" href="{{route('sanpham')}}">Món ăn</a></li>
 
                     </ul>
                 </div>
